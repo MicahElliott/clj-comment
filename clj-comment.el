@@ -39,11 +39,11 @@
 
 ;;; Code:
 
+(require 'smartparens)
+
 
 (defun clj-comment-action ()
-  "Do a Clojure-style `#_' un/commenting of “ignore” macro for sexps.
-Somewhat helpful for debugging.
-Requires smartparens (for now)."
+  "Simplistic original non-recursive version, still useful."
   (interactive)
   (save-excursion
     (when (not (= (char-after) ?\())
@@ -51,32 +51,31 @@ Requires smartparens (for now)."
       (sp-backward-up-sexp)) ; smartparens is easier
     (if (= (char-before) ?_)
         (delete-char -2)
-      (insert "#_"))))
-(global-set-key (kbd "C-c ;") 'clj-comment-action)
+      (progn
+        (message "commenting form")
+        (insert "#_")))))
+
+;; (global-set-key (kbd "C-c ;") 'clj-comment-action)
 
 (defun clj-recurse-to-top ()
-  "Search up tree for macro until found or give up at top and return to BEG."
-  (interactive)
-  (if (sp-backward-up-sexp)
+  "Search up tree for ignore-comment macro until found or give up at top."
+  (if (sp-backward-up-sexp) ; returns nil when reaches top
       ;; Work our way up tree till top or found existing comment
-      (progn
-        (if (not (equal (char-before) ?_))
-            ;; recursing up, no symbol yet
-            (clj-recurse-to-top)
-          (progn
-            (message "detected symbol, removing")
-            (delete-char -2)))
-        ;; (message "returning true")
-        ;; t
-        )
-    ;; Hit the top
-    ;; FIXME: still need to check for symbol
-    (progn
-      (message "made it all the way to top; getting out now; no symbol found")
-      t)))
+      (if (not (equal (char-before) ?_))
+          ;; recursing up, no symbol yet
+          (clj-recurse-to-top)
+        (progn
+          (message "uncommenting form")
+          (delete-char -2)
+          nil))  ; be explicit about returning nil
+    ;; Made it all the way to top; getting out now; no symbol found
+    ;; FIXME: still might need to check for symbol
+    t))
 
-(defun clj-find-ignore-macro ()
-  "Foo."
+(defun clj-comment ()
+  "Do a Clojure-style `#_' un/commenting of “ignore” macro for sexps.
+Somewhat helpful for debugging.
+Requires smartparens (for now)."
   (interactive)
   (let ((beg (point)))
     (if (clj-recurse-to-top)
@@ -88,9 +87,6 @@ Requires smartparens (for now)."
       ;; action already taken
       (goto-char (- beg 2)))))
 
-(global-set-key (kbd "C-c :") 'clj-find-ignore-macro)
-
-;; (-mark)
-
+(global-set-key (kbd "C-c ;") 'clj-comment)
 
 ;;; clj-comment.el ends here
