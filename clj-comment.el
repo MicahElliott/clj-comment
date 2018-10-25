@@ -72,6 +72,7 @@
     ;; FIXME: still might need to check for symbol
     t))
 
+;;;###autoload
 (defun clj-comment ()
   "Do a Clojure-style `#_' un/commenting of “ignore” macro for sexps.
 Somewhat helpful for debugging.
@@ -88,5 +89,8 @@ Requires smartparens (for now)."
       (goto-char (- beg 2)))))
 
 (global-set-key (kbd "C-c ;") 'clj-comment)
+
+
+(provide 'clj-comment)
 
 ;;; clj-comment.el ends here
