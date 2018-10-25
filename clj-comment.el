@@ -3,7 +3,7 @@
 ;; Copyright © 2019 Micah Elliott
 ;;
 ;; Author: Micah Elliott <mde@micahelliott.com>
-;; URL: https://github.com/bbatsov/clj-comment
+;; URL: https://github.com/MicahElliott/clj-comment
 ;; Version: 0.1.0-snapshot
 ;; Keywords: commenting comments clojure
 ;; Package-Requires: ((emacs "25.1") (smartparens "1.11.0") (clojure-mode "5.9.0"))
