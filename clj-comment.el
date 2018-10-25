@@ -6,7 +6,7 @@
 ;; URL: https://github.com/bbatsov/clj-comment
 ;; Version: 0.1.0-snapshot
 ;; Keywords: commenting comments clojure
-;; Package-Requires: ((emacs "25.1") (smartparens "1.11.0)") (clojure-mode "5.9.0"))
+;; Package-Requires: ((emacs "25.1") (smartparens "1.11.0") (clojure-mode "5.9.0"))
 
 ;; This file is not part of GNU Emacs.
 
