@@ -21,6 +21,8 @@ Then you should bind it to something like <kbd>C-c ;</kbd> because I
 don't see it being used elsewhere and it's similar to the `;`-style
 Clojure comment.
 
+    (global-set-key (kbd "C-c ;") 'clj-comment)
+
 ## Caveats
 Although the `#_` can have whitespace between it and its discarded
 form, clj-comment does not presently support the whitespace.
