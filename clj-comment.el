@@ -15,8 +15,12 @@
 ;; Do a Clojure-style `#_' un/commenting of “ignore” macro for sexps,
 ;; including most any pair that is treated by smartparens.
 ;; Helpful for debugging.
+;;
+;; Installation:
+;;
+;; ()
 
-;; TODO:
+;;; TODO:
 ;; - enable `(comment ...)'-style
 ;;
 
@@ -40,6 +44,8 @@
 ;;; Code:
 
 (require 'smartparens)
+
+
 
 
 (defun clj-comment-action ()
@@ -88,8 +94,7 @@ Requires smartparens (for now)."
       ;; action already taken
       (goto-char (- beg 2)))))
 
-(global-set-key (kbd "C-c ;") 'clj-comment)
-
+;; (global-set-key (kbd "C-c ;") 'clj-comment)
 
 (provide 'clj-comment)
 
