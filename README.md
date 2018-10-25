@@ -13,15 +13,14 @@ This package is available on [Melpa](melpa.org):
 
     M-x package-install clj-comment
 
-Add to your Emacs config:
+Enable this in your Emacs config.  You should bind it to something
+like <kbd>C-c ;</kbd> (I don't see that one being used elsewhere, and
+it's similar to the `;`-style Clojure comment.)
 
-    (add-hook 'clojure-mode-hook #'clj-comment)
-
-Then you should bind it to something like <kbd>C-c ;</kbd> because I
-don't see it being used elsewhere and it's similar to the `;`-style
-Clojure comment.
-
-    (global-set-key (kbd "C-c ;") 'clj-comment)
+``` el
+(add-hook 'clojure-mode-hook #'clj-comment)
+(global-set-key (kbd "C-c ;") 'clj-comment)
+```
 
 ## Caveats
 Although the `#_` can have whitespace between it and its discarded

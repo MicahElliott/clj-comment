@@ -16,12 +16,11 @@
 ;; including most any pair that is treated by smartparens.
 ;; Helpful for debugging.
 ;;
-;; Installation:
-;;
-;; ()
+;; See the README for more details:
+;; https://github.com/micahelliott/clj-comment
 
 ;;; TODO:
-;; - enable `(comment ...)'-style
+;; + enable `(comment ...)'-style
 ;;
 
 ;;; License:
